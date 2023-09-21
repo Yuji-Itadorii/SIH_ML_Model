@@ -25,9 +25,9 @@ def convert_to_json(data):
 
 
 def recommend_courses(keyword):
-    df = load_data_from_pkl("df.pkl")
-    pt = load_data_from_pkl("pt.pkl")
-    similarity_scores = load_data_from_pkl("similarity_scores.pkl")
+    df = load_data_from_pkl("data_Framedf.pkl")
+    pt = load_data_from_pkl("pt_df.pkl")
+    similarity_scores = load_data_from_pkl("similarity_scores_df.pkl")
 
     courses = []
     for x in pt.index:
@@ -58,7 +58,7 @@ def index():
 @app.route("/get_data", methods=["GET"])
 def get_data():
     # Load data from .pkl file
-    data = load_data_from_pkl("popular.pkl")
+    data = load_data_from_pkl("popular_df.pkl")
 
     # Convert data to JSON
     json_data = convert_to_json(data)
