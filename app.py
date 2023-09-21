@@ -3,13 +3,15 @@ import pickle
 import pandas as pd
 import json
 import numpy as np
+import os
 
 
 app = Flask(__name__)
 
 
 # Load data from the .pkl file
-def load_data_from_pkl(file_path):
+def load_data_from_pkl(file_name):
+    file_path = os.path.abspath(os.path.join(os.getcwd(), file_name))
     with open(file_path, "rb") as file:
         data = pickle.load(file)
     return data
