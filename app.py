@@ -5,6 +5,7 @@ import json
 import numpy as np
 import os
 from flask_cors import CORS
+from flask_cors import cross_origin
 
 
 app = Flask(__name__)
@@ -71,6 +72,7 @@ def get_data():
 
 
 @app.route("/recommend", methods=["POST"])
+@cross_origin()
 def recommend():
     if request.method == "POST":
         # Get the user input from the form
