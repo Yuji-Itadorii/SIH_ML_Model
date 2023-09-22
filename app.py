@@ -71,18 +71,14 @@ def get_data():
     return jsonify(json_data)
 
 
-@app.route("/recommend", methods=["POST"])
+@app.route("/recommend/<user_input>", methods=["GET"])
 @cross_origin()
-def recommend():
-    if request.method == "POST":
-        # Get the user input from the form
-        user_input = request.form["user_input"]
+def recommend(user_input):
+    # Call the recommend function with the user input
+    recommendation = recommend_courses(user_input)
 
-        # Call the recommend function with the user input
-        recommendation = recommend_courses(user_input)
-
-        # Return the JSON response
-        return jsonify(recommendation)
+    # Return the JSON response
+    return jsonify(recommendation)
 
 
 if __name__ == "__main__":
